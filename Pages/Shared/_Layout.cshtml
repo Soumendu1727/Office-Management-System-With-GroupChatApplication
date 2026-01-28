@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - New_Project</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/New_Project.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- 🔹 HEADER / NAVBAR -->
+    @if (Context.Session.GetString("UserRole") != null)
+    {
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-page="/Discussion/Index">
+                    Client-Server System
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+
+                        <!-- 🔹 Visible to ALL logged-in users -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Discussion/Index">
+                                Discussion
+                            </a>
+                        </li>
+
+                        <!-- 🔐 ADMIN ONLY -->
+                        @if (Context.Session.GetString("UserRole") == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Admin/Dashboard">
+                                    Dashboard
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Admin/Users">
+                                    Manage Users
+                                </a>
+                            </li>
+                        }
+
+                        <!-- 🔓 LOGOUT -->
+                        <li class="nav-item">
+                            <form method="post" asp-page="/Login" asp-page-handler="Logout" class="d-inline">
+                                <button type="submit" class="btn btn-link nav-link text-warning">
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+
+    <!-- 🔹 PAGE CONTENT -->
+    <div class="container mt-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- 🔹 SCRIPTS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

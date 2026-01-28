@@ -1,0 +1,105 @@
+@page
+@model New_Project.Pages.Admin.UsersModel
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<link rel="stylesheet" href="~/css/admin-users.css" />
+
+<h2 class="mb-4">User Management</h2>
+
+<form method="post" class="card p-4 mb-5 shadow-sm">
+    <h5 class="mb-3">Create New User</h5>
+
+    <div class="mb-3">
+        <label>Name</label>
+        <input asp-for="NewUser.Name" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="NewUser.Email" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <input type="password" asp-for="Password" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Role</label>
+        <select asp-for="NewUser.Role" class="form-select">
+            <option value="Admin">Admin</option>
+            <option value="TeamLeader">Team Leader</option>
+            <option value="User">Member</option>
+        </select>
+    </div>
+
+    <button class="create-user">Create User</button>
+</form>
+
+<h5>Existing Users</h5>
+
+<table class="table table-borderless align-middle">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Teamlead</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <form method="post" asp-page-handler="Update">
+                    <td>
+                        <input type="hidden" name="EditUser.Id" value="@user.Id" />
+                        <input class="form-control" name="EditUser.Name" value="@user.Name" />
+                    </td>
+                    <td>
+                        <input class="form-control" name="EditUser.Email" value="@user.Email" />
+                    </td>
+                    <td>
+                        <select class="form-select" name="EditUser.Role">
+                            <option value="Admin" selected="@(user.Role=="Admin")">
+                                Admin
+                            </option>
+                            <option value="TeamLeader" selected="@(user.Role=="TeamLeader")">
+                                TeamLeader
+                            </option>
+                            <option value="User" selected="@(user.Role=="User")">
+                                Member
+                            </option>
+                        </select>
+                        
+                    </td>
+                    <td>
+                        <select class="form-select" name="EditUser.TeamLeaderId">
+                            <option value="">-- None --</option>
+                            @foreach (var leader in Model.TeamLeaders)
+                            {
+                                <option value="@leader.Id"
+                                        selected="@(user.TeamLeaderId == leader.Id)">
+                                    @leader.Name
+                                </option>
+                            }
+                        </select>
+                    </td>
+                
+                    <td class="text-center">
+                        <button class="create-update">Update</button>
+                    </td>
+                </form>
+                <td>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@user.Id"
+                            onsubmit="return confirm('Are you sure you want to delete this user?');"
+                            class="d-inline">
+                            <button class="create-user">Delete</button>
+                    </form>        
+                </td>    
+            </tr>
+        }
+    </tbody>
+</table>

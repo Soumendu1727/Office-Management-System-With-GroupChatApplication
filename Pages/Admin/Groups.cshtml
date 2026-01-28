@@ -1,0 +1,98 @@
+@page
+@model New_Project.Pages.Admin.GroupsModel
+<link rel="stylesheet" href="~/css/groups.css" />
+
+
+
+<h2>Create Group</h2>
+
+
+<form method="post" asp-page-handler="Create" class="card p-4 mb-4">
+    <div class="mb-3">
+        <label>Group Name</label>
+        <input asp-for="GroupName" class="form-control" required />
+    </div>
+
+
+    <div class="mb-3">
+        <label>Team Leaders</label>
+        <select asp-for="SelectedTeamLeaders" multiple class="form-select">
+            @foreach (var u in Model.Users.Where(u => u.Role == "TeamLeader"))
+            {
+                <option value="@u.Id">@u.Name</option>
+            }
+        </select>
+    </div>
+
+
+    <div class="mb-3">
+        <label>Members</label>
+        <select asp-for="SelectedMembers" multiple class="form-select">
+            @foreach (var u in Model.Users.Where(u => u.Role == "User"))
+            {
+                <option value="@u.Id">@u.Name</option>
+            }
+        </select>
+    </div>
+
+
+    <button class="create-user">Create Group</button>
+</form>
+
+
+<h3>Existing Groups</h3>
+
+
+@foreach (var group in Model.Groups)
+{
+    <form method="post" asp-page-handler="UpdateGroup" class="card p-3 mb-3">
+        <input type="hidden" name="EditGroup.Id" value="@group.Id" />
+
+        <div class="mb-2">
+            <label>Group Name</label>
+            <input class="form-control"
+                   name="EditGroup.GroupName"
+                   value="@group.GroupName" />
+        </div>
+
+        <div class="mb-2">
+            <label>Team Leaders</label>
+            <select class="form-select" multiple
+                    name="EditGroup.TeamLeaderIds">
+                @foreach (var tl in Model.TeamLeaders)
+                {
+                    <option value="@tl.Id"
+                            selected="@group.TeamLeaderIds.Contains(tl.Id)">
+                        @tl.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-2">
+            <label>Members</label>
+            <select class="form-select" multiple
+                    name="EditGroup.MemberIds">
+                @foreach (var m in Model.Members)
+                {
+                    <option value="@m.Id"
+                            selected="@group.MemberIds.Contains(m.Id)">
+                        @m.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button class="create-update">Update</button>
+
+            <form method="post" asp-page-handler="DeleteGroup">
+                <input type="hidden" name="groupId" value="@group.Id" />
+                <button class="create-user"
+                        onclick="return confirm('Delete this group?')">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </form>
+}

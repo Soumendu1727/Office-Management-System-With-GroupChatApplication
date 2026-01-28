@@ -1,0 +1,78 @@
+@page
+@model New_Project.Pages.Admin.DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+@section Scripts {
+    <link rel="stylesheet" href="~/css/admin-dashboard.css" />
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="dashboard-title">Welcome, @Model.AdminName 👋</h2>
+            <p class="dashboard-subtitle">Admin Control Panel</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Manage Users -->
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">User Management</h5>
+                    <p class="card-text">
+                        Add Team Leaders and Users, assign roles and manage access.
+                    </p>
+                    <a asp-page="/Admin/Users" class="btn btn-primary">
+                        Manage Users
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Discussion -->
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Discussion</h5>
+                    <p class="card-text">
+                        Participate in team discussions and announcements.
+                    </p>
+                    <a asp-page="/Discussion/Index" class="btn btn-success">
+                        Go to Discussion
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Create Groups</h5>
+                    <p class="card-text">
+                        Creating groups and maintainig the workflow
+                    </p>
+                    <a asp-page="/Admin/Groups" class="btn btn-primary">
+                        Go to Create Groups
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports (Future use) -->
+        <div class="col-md-4">
+            <div class="card dashboard-card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Reports</h5>
+                    <p class="card-text">
+                        View login/logout and activity reports (coming soon).
+                    </p>
+                    <button class="btn btn-secondary" disabled>
+                        View Reports
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

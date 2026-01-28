@@ -1,0 +1,56 @@
+[
+  {
+    "Id": 1,
+    "SenderId": 1,
+    "ReceiverId": 0,
+    "GroupId": 1,
+    "Contents": "nljqvm7tFIqQptJ\u002B3yaf\u002BHRNe692fPhpFHjSBDjNvuM=",
+    "SentAt": "2026-01-21T19:17:27.8241389+05:30",
+    "IsRead": false
+  },
+  {
+    "Id": 2,
+    "SenderId": 6,
+    "ReceiverId": 0,
+    "GroupId": 1,
+    "Contents": "7wfK/ZtWp/cl2lROOjHefwBskjf6M3x/nJQcywFffFw=",
+    "SentAt": "2026-01-21T19:18:15.9201731+05:30",
+    "IsRead": false
+  },
+  {
+    "Id": 3,
+    "SenderId": 2,
+    "ReceiverId": 0,
+    "GroupId": 2,
+    "Contents": "/51AWGkHiD/J7EbZe2B4LfIS\u002BrBQ8Xxs0kBlnGpc0tM=",
+    "SentAt": "2026-01-21T19:27:10.3332906+05:30",
+    "IsRead": false
+  },
+  {
+    "Id": 4,
+    "SenderId": 1,
+    "ReceiverId": 0,
+    "GroupId": 2,
+    "Contents": "NUa6Hh\u002B81GUOtvWqlrKGank\u002BbXST/u0qk/\u002BUoNSYaCs=",
+    "SentAt": "2026-01-22T13:32:57.868776+05:30",
+    "IsRead": false
+  },
+  {
+    "Id": 5,
+    "SenderId": 3,
+    "ReceiverId": 0,
+    "GroupId": 2,
+    "Contents": "exgO9mWxqQF1jRV1peFsEUuT12W3oK\u002B0mTTQGRPLjNE=",
+    "SentAt": "2026-01-22T13:34:33.439162+05:30",
+    "IsRead": false
+  },
+  {
+    "Id": 6,
+    "SenderId": 1,
+    "ReceiverId": 0,
+    "GroupId": 1,
+    "Contents": "EBVo8y7KZJCKy78WZuXGNN0al2zwJxc4O12XaR0P7Fk=",
+    "SentAt": "2026-01-28T16:56:54.7997748+05:30",
+    "IsRead": false
+  }
+]

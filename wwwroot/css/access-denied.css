@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: #f4f6f9;
+}
+
+.access-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.access-card {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+.access-card h2 {
+    color: #d32f2f;
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.access-card p {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.btn-login {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #212529;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #161f27;
+}
+
+
+/* Admin Dashboard Styles */
+
+.dashboard-title {
+    font-weight: 700;
+    color: #212529;
+}
+
+.dashboard-subtitle {
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card .card-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.dashboard-card .card-text {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.dashboard-card .btn {
+    margin-top: 10px;
+}

@@ -1,0 +1,26 @@
+form.card {
+    max-width: 600px;
+}
+
+table {
+    background-color: #fff;
+}
+
+button.create-user {
+    padding: 10px 20px;
+    background-color: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button.create-update {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: rgb(217, 220, 226);
+    color: #1f2937 ;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}

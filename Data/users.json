@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "Name": "Admin",
+    "Email": "admin@test.com",
+    "Password": "2v32Srv/7tihCeekgurzaw==|6d7WMSGbmAltLbLSfIRgjrPr7Gk3Ozae5nWS5Wd27WA=",
+    "Role": "Admin",
+    "TeamLeaderId": null,
+    "IsActive": true
+  },
+  {
+    "Id": 3,
+    "Name": "Soumendu",
+    "Email": "sadhukhan@gmail.com",
+    "Password": "WG6\u002BEqExQIumsVwQPbEQEQ==|ba\u002B0CfNj1eXgxGbXid/KI4XZaoZbsucd96K193iq6C8=",
+    "Role": "User",
+    "TeamLeaderId": 9,
+    "IsActive": true
+  },
+  {
+    "Id": 4,
+    "Name": "Ayush",
+    "Email": "ayush@gmail.com",
+    "Password": "URT5WcWi8OwDJC1n6TVLnw==|8agJ\u002BZjPw3cLqFl2Vth30Z5sexYFUALUUiNOGECTFQk=",
+    "Role": "TeamLeader",
+    "TeamLeaderId": null,
+    "IsActive": true
+  },
+  {
+    "Id": 5,
+    "Name": "Rahul",
+    "Email": "rahul@gmail.com",
+    "Password": "9jbbaSQX9tKKKZ2Nw/CI2g==|28h8NiEenHhcj2rMZpLRpFmkPyewZsfVJlZc25RDQCw=",
+    "Role": "User",
+    "TeamLeaderId": 4,
+    "IsActive": true
+  },
+  {
+    "Id": 6,
+    "Name": "W",
+    "Email": "w@gmail.com",
+    "Password": "t7\u002B\u002BXb6XXq6QeLahlcwClg==|wpbMaiNSxBSUZY9iop4nw0cwLpS8SH\u002BzAtCf3VfyCQ0=",
+    "Role": "User",
+    "TeamLeaderId": 7,
+    "IsActive": true
+  },
+  {
+    "Id": 7,
+    "Name": "Amar Da",
+    "Email": "kala@gmail.com",
+    "Password": "TW5F8v7HywRc\u002BFLs/YpPYg==|QfQGX9BVfcS\u002BlW7c2lvBxQ/dAs33zPnjLk1BbZGgcJs=",
+    "Role": "TeamLeader",
+    "TeamLeaderId": null,
+    "IsActive": true
+  },
+  {
+    "Id": 8,
+    "Name": "x",
+    "Email": "x@gmail.com",
+    "Password": "dayfla83PPAnTeRfN/nS9Q==|ojl0FTyo2uqzRLwo4gjeCV4jr8JCplEOXBtKtPhvqEg=",
+    "Role": "User",
+    "TeamLeaderId": 4,
+    "IsActive": true
+  },
+  {
+    "Id": 9,
+    "Name": "Akash",
+    "Email": "akash@gmail.com",
+    "Password": "jLYR7l/G6h7OlYl9VozE\u002Bw==|N7NLkiIws0F4lPKuRzAxeXRapqmSS2xvQ1goXnGKyxU=",
+    "Role": "TeamLeader",
+    "TeamLeaderId": null,
+    "IsActive": true
+  }
+]

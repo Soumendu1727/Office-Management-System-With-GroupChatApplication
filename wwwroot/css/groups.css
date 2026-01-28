@@ -1,0 +1,40 @@
+.card {
+  border-radius: 10px;
+}
+
+select[multiple] {
+  min-height: 120px;
+}
+
+.member {
+    margin-bottom: 1rem;
+}
+
+select[multiple] option:checked {
+    background-color: #1f2937 !important; 
+    color: #ffffff !important;           
+}
+
+/* Hover (optional) */
+select[multiple] option:hover {
+    background-color: #e7f1ff;
+    color: #000;
+}
+
+button.create-user {
+    padding: 5px 15px;
+    background-color: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button.create-update {
+    padding: 5px 15px;
+    background-color: rgb(217, 220, 226);
+    color: #1f2937 ;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}

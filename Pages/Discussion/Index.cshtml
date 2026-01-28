@@ -1,0 +1,40 @@
+@page
+@model New_Project.Pages.Discussion.IndexModel
+@{
+    ViewData["Title"] = "Discussions";
+}
+
+<link rel="stylesheet" href="~/css/discussion.css" />
+
+<div class="discussion-wrapper">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h4>Client Server System</h4>
+            <span>All</span>
+        </div>
+
+        <div class="group-list">
+            @foreach (var group in Model.Groups)
+            {
+                <a class="group-item"
+                   asp-page="Group"
+                   asp-route-groupId="@group.Id">
+                    <div class="group-name">
+                        @group.GroupName
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+
+    <!-- Main Panel -->
+    <div class="chat-placeholder">
+        <div class="empty-state">
+            <h5>Select a group to start discussion</h5>
+            <p>Your messages will appear here</p>
+        </div>
+    </div>
+
+</div>

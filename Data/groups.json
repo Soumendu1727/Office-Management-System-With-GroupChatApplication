@@ -1,0 +1,27 @@
+[
+  {
+    "Id": 1,
+    "GroupName": "Seis Project",
+    "TeamLeaderIds": [
+      4,
+      7
+    ],
+    "MemberIds": [
+      6
+    ],
+    "CreatedByAdminId": 1
+  },
+  {
+    "Id": 2,
+    "GroupName": "OB Project",
+    "TeamLeaderIds": [
+      2,
+      4
+    ],
+    "MemberIds": [
+      3,
+      5
+    ],
+    "CreatedByAdminId": 1
+  }
+]

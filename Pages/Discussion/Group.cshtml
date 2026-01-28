@@ -1,0 +1,87 @@
+@page
+@model New_Project.Pages.Discussion.GroupModel
+@{
+    ViewData["Title"] = Model.Group.GroupName;
+    var currentUserId = int.Parse(HttpContext.Session.GetString("UserId")!);
+}
+
+<link rel="stylesheet" href="~/css/discussion.css" />
+<link rel="stylesheet" href="~/css/chat.css" />
+
+<div class="discussion-wrapper">
+
+    <!-- SIDEBAR (same as Index) -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h4>Client Server System</h4>
+            <span>Groups</span>
+        </div>
+
+        <div class="group-list">
+            @foreach (var group in Model.Groups)
+            {
+                <a class="group-item @(group.Id == Model.Group.Id ? "active" : "")"
+                   asp-page="Group"
+                   asp-route-groupId="@group.Id">
+                    <div class="group-name">
+                        @group.GroupName
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+
+    <!-- CHAT PANEL -->
+    <div class="chat-wrapper">
+
+        <!-- HEADER -->
+        <div class="chat-header">
+            <div>
+                <h2>Client Server System</h2>
+                <span>@Model.Group.GroupName</span>
+            </div>
+
+            <a asp-page="Index" class="back-btn">
+                ⬅ 
+            </a>
+
+        </div>
+
+        
+        <!-- CHAT BODY -->
+        <div class="chat-body" id="chatBody">
+            @foreach (var msg in Model.Messages)
+            {
+                var isMine = msg.SenderId == currentUserId;
+
+                <div class="chat-message @(isMine ? "sent" : "received")">
+                    <div class="bubble">
+                        <div class="sender-name">
+                            <b>@Model.UserNames[msg.SenderId] :</b>
+                            <span>@msg.Contents</span>
+                        </div>
+
+                        <span class="time">
+                            @msg.SentAt.ToString("hh:mm tt")
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- INPUT -->
+        <form method="post" class="chat-input">
+            <textarea asp-for="Contents"
+                      placeholder="Type your message..."
+                      required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    const chatBody = document.getElementById("chatBody");
+    chatBody.scrollTop = chatBody.scrollHeight;
+</script>
