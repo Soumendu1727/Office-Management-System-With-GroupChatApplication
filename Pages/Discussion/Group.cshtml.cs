@@ -105,8 +105,9 @@ namespace New_Project.Pages.Discussion
         }
 
         // ================= POST =================
-        public async Task<IActionResult> OnPostAsync(int groupId, IFormFile? uploadedFile)
+        public async Task<IActionResult> OnPostAsync(int groupId, IFormFile[]? uploadedFiles)
         {
+            
             if (!TryGetUserId(out int userId, out _))
                 return RedirectToPage("/AccessDenied");
 
@@ -132,27 +133,39 @@ namespace New_Project.Pages.Discussion
             }
 
             // File
-            if (uploadedFile != null && uploadedFile.Length > 0)
+            if (uploadedFiles != null && uploadedFiles.Length > 0)
             {
                 var folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/group-files");
                 Directory.CreateDirectory(folder);
 
-                var uniqueName = $"{Guid.NewGuid()}_{uploadedFile.FileName}";
-                var path = Path.Combine(folder, uniqueName);
-
-                await using var stream = new FileStream(path, FileMode.Create);
-                await uploadedFile.CopyToAsync(stream);
-
-                var file = _fileService.AddFile(new SharedFile
+                foreach (var file in uploadedFiles)
                 {
-                    GroupId = groupId,
-                    FileName = uploadedFile.FileName,
-                    FilePath = $"/uploads/group-files/{uniqueName}",
-                    UploadedBy = userId
-                });
+                    if (file.Length == 0) continue;
 
-                await _hubContext.Clients.Group(groupId.ToString())
-                    .SendAsync("ReceiveFile", userName, file.FileName, file.Id, userId);
+                    var uniqueName = $"{Guid.NewGuid()}_{file.FileName}";
+                    var path = Path.Combine(folder, uniqueName);
+
+                    await using var stream = new FileStream(path, FileMode.Create);
+                    await file.CopyToAsync(stream);
+
+                    var savedFile = _fileService.AddFile(new SharedFile
+                    {
+                        GroupId = groupId,
+                        FileName = file.FileName,
+                        FilePath = $"/uploads/group-files/{uniqueName}",
+                        UploadedBy = userId
+                    });
+
+                    await _hubContext.Clients.Group(groupId.ToString())
+                        .SendAsync("ReceiveFile",
+                            userName,
+                            savedFile.FileName,
+                            savedFile.Id,
+                            userId,
+                            savedFile.UploadedAt.ToString("dd/MM/yy , hh:mm tt"));
+                }
+
+                
             }
 
             return RedirectToPage(new { groupId });

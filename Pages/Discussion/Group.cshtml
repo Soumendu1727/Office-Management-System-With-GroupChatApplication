@@ -82,17 +82,17 @@
         </div>
 
         <!-- INPUT -->
-        <form method="post" enctype="multipart/form-data" class="chat-input">
+        <form method="post" enctype="multipart/form-data" class="chat-input" asp-route-groupId="@Model.Group.Id">
             <!-- File Upload Button -->
             <input type="file"
-                   name="uploadedFile"
-                   id="uploadedFile"
+                   name="uploadedFiles"
+                   id="uploadedFiles"
                    style="display:none;"
-                   onchange="uploadFileAuto()" />
+                   onchange="uploadFileAuto()" multiple />
 
             <button type="button"
                     class="file-btn"
-                    onclick="document.getElementById('uploadedFile').click()">
+                    onclick="document.getElementById('uploadedFiles').click()">
                 📎
             </button>
 
@@ -147,7 +147,7 @@
     });
 
     // -------- RECEIVE FILE MESSAGE --------
-    connection.on("ReceiveFile", function (user, fileName, filePath, senderId) {
+    connection.on("ReceiveFile", function (user, fileName, fileId, senderId, time) {
         const isMine = senderId == currentUserId;
         const fileHtml = `
             <div class="chat-message ${isMine ? "sent file-received" : "received file-received"}">
@@ -187,8 +187,20 @@
 
     // -------- AUTO SUBMIT FILE --------
     function uploadFileAuto() {
-        const fileInput = document.getElementById("uploadedFile");
+        const fileInput = document.getElementById("uploadedFiles");
+
+        console.log("Selected files count:", fileInput.files.length);
+
+        for (let i = 0; i < fileInput.files.length; i++) {
+            console.log(
+                `File ${i + 1}:`,
+                fileInput.files[i].name,
+                fileInput.files[i].size
+            );
+        }
+
         if (fileInput.files.length === 0) return;
+
         fileInput.closest("form").submit();
     }
 </script>
